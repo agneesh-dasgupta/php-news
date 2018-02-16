@@ -5,7 +5,6 @@
     $storyText = $_POST['storytext'];
     $tempUsername = $_SESSION['user_id'];
     $link = $_POST['link'];
-    
     $stmt = $mysqli->prepare("insert into stories (storytext, username, link) values (?,?,?)");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -13,7 +12,7 @@
     }
     
     
-    $stmt->bind_param('sss', $first, $last, $dept);
+    $stmt->bind_param('sss', $storyText, $tempUsername, $link);
 
     $stmt->execute();
 
