@@ -6,6 +6,11 @@
            </title> 
         </head>
         <body>
+    <p>
+        <form action = "userstories.php">
+            <input type = "submit" value = "View user stories" />
+        </form>
+    </p>
             <?php
  require 'database.php';
 $stmt = $mysqli->prepare("select storytext, link from stories order by story_id");
@@ -20,10 +25,10 @@ $stmt->bind_result($story_text, $link);
 
 echo "<ul>\n";
 while($stmt->fetch()){
-	printf("\t<li>%s %s</li>\n",
-		htmlspecialchars($story_text),
-		htmlspecialchars($link)
-	);
+	printf("\t<li>%s</li>\n",
+		htmlspecialchars($story_text)
+      );
+ echo '<a href ="'.$link.'"> Link </a>';
 }
 echo "</ul>\n";
 
