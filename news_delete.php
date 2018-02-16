@@ -3,7 +3,6 @@
     session_start();
     
     $story_id = $_POST['storyid'];
-    //echo $story_id;
     
     $stmt = $mysqli->prepare("delete from stories where story_id=?");
     if(!$stmt){
