@@ -19,7 +19,7 @@
     
     echo "<ul>\n";
     while($stmt->fetch()){
-        printf("\t<li>%s %s</li>\n",
+        printf("\t<li>%s</li>\n",
 		htmlspecialchars($storyText)
 	);
     }

@@ -8,11 +8,13 @@
         <body>
     <p>
         <form action = "userstories.php">
-            <input type = "submit" value = "View user stories" />
+         <input type = "submit" value = "View user stories" />
         </form>
     </p>
-            <?php
- require 'database.php';
+     <?php
+require 'database.php';
+session_start();
+echo $_SESSION['user_id'];
 $stmt = $mysqli->prepare("select storytext, link from stories order by story_id");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);

@@ -1,5 +1,7 @@
+
 <?php
-    require 'database.php';
+require 'database.php';
+session_start();
     // Use a prepared statement
 $stmt = $mysqli->prepare("SELECT COUNT(*), username, password FROM users WHERE username=?");
 
