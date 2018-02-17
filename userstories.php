@@ -33,9 +33,9 @@
         echo '</form>';
     }
     echo "</ul>\n";
-    
-    
-    
+    echo '<form name = "input" action = "main_page.php">';
+    echo '<input type = "submit" name = "backtomain" value = "Back to main page">';
+    echo '</form>';
 
     $stmt->close();
     

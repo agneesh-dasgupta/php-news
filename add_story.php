@@ -1,7 +1,6 @@
 <?php
     require 'database.php';
     session_start();
-    
     $storyText = $_POST['storytext'];
     $tempUsername = $_SESSION['user_id'];
     $link = $_POST['link'];
