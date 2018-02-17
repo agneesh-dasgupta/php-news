@@ -7,14 +7,18 @@
         </head>
         <body>
     <p>
-        <form action = "userstories.php">
-         <input type = "submit" value = "View user stories" />
-        </form>
+        
     </p>
      <?php
 require 'database.php';
 session_start();
-echo $_SESSION['user_id'];
+$isGuest = $_POST['isGuest'];
+      if(strcmp($isGuest,'true')!=0){
+       echo '<form action = "userstories.php">';
+      echo '<input type = "submit" value = "View user stories" />';
+      echo '</form>';
+       
+      }
 $stmt = $mysqli->prepare("select storytext, link from stories order by story_id");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -31,6 +35,12 @@ while($stmt->fetch()){
 		htmlspecialchars($story_text)
       );
  echo '<a href ="'.$link.'"> Link </a>';
+ 
+ echo "<form action = 'comment_submit.php' method = POST>";
+	echo '<textarea name = "commentText">' . $comment_text . '</textarea>';
+ echo "<label for='viewbutton'></label>";
+ echo "<input type='submit' id ='viewbutton' value='Submit Comment'/>";
+ echo "</form>";
 }
 echo "</ul>\n";
 
