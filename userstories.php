@@ -6,6 +6,7 @@
     echo '<input type = "submit" name = "addstory" value = "Add Story">';
     echo '</form>';
     $tempUsername = $_SESSION['user_id'];
+    echo $tempUsername;
     $stmt = $mysqli->prepare("select story_id, storytext  from stories where username=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
