@@ -2,12 +2,15 @@
     require 'database.php';
     session_start();
     
-    $username = $_SESSION['user_id']
+    $username = $_SESSION['user_id'];
     $commentText= $_POST['commentText'];
     $story_id = $_SESSION['storyid'];
    
-
-    $stmt = $mysqli->prepare("insert into commets (username, comment_text, story_id) values (?, ?, ?)"); 
+    echo $username;
+    echo $commentText;
+    echo $story_id;
+   
+    $stmt = $mysqli->prepare("insert into comments (username, comment_text, story_id) values (?, ?, ?)"); 
     if(!$stmt){
     	printf("Query Prep Failed: %s\n", $mysqli->error);
     	exit;
@@ -18,7 +21,7 @@
     $stmt->execute();
  
     $stmt->close();
-    header("Location: main_page.php");
+   // header("Location: main_page.php");
     exit;
 
 
