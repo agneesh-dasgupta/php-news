@@ -6,7 +6,7 @@
     echo '<input type = "submit" name = "addstory" value = "Add Story">';
     echo '</form>';
     $tempUsername = $_SESSION['user_id'];
-    $stmt = $mysqli->prepare("select story_id, storytext  from stories where username=?");
+    $stmt = $mysqli->prepare("select story_id, storytext, title from stories where username=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
@@ -16,11 +16,12 @@
 
     $stmt->execute();
 
-    $stmt->bind_result($story_id, $storyText);
+    $stmt->bind_result($story_id, $storyText, $title);
     
     echo "<ul>\n";
     while($stmt->fetch()){
-        printf("\t<li>%s</li>\n",
+        printf("\t<li>%s<br>%s</li>\n",
+        htmlspecialchars($title),
 		htmlspecialchars($storyText)
 	);
         echo '<form name = "input" action = "news_edit.php" method = "POST">';

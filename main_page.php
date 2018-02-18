@@ -6,9 +6,6 @@
            </title> 
         </head>
         <body>
-    <p>
-        
-    </p>
      <?php
 require 'database.php';
 session_start();
@@ -20,7 +17,8 @@ $isGuest = $_POST['isGuest'];
       echo '</form>';
        
       }
-$stmt = $mysqli->prepare("select storytext, link, comments.comment_text from stories join comments on (stories.story_id=comments.storyid) order by story_id");
+      
+$stmt = $mysqli->prepare("select title from stories order by story_id");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
@@ -28,18 +26,16 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($story_text, $link, $commentText);
+$stmt->bind_result($title);
 
 echo "<ul>\n";
 while($stmt->fetch()){
-	printf("\t<li>%s</li>\n",
-		htmlspecialchars($story_text)
-      );
- echo '<a href ="'.$link.'"> Link </a>';
- echo "<form action = 'comment_submit.php' method = POST>";
-	echo '<textarea name = "commentText">' . $commentText . '</textarea>';
- echo "<label for='viewbutton'></label>";
- echo "<input type='submit' id ='viewbutton' value='submitComment'/>";
+//	printf("\t<li>%s</li>\n",
+//		htmlspecialchars()
+//  );
+  
+ echo "<form action = 'view_story.php' method = POST>";
+ echo '<a href= "view_story.php"> '.$title.' </a>';
  echo "</form>";
 }
 echo "</ul>\n";
