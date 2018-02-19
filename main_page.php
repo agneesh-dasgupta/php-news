@@ -18,7 +18,7 @@ $isGuest = $_POST['isGuest'];
        
       }
       
-$stmt = $mysqli->prepare("select title from stories order by story_id");
+$stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
@@ -26,17 +26,18 @@ if(!$stmt){
 
 $stmt->execute();
 
-$stmt->bind_result($title);
+$stmt->bind_result($title, $story_id);
 
 echo "<ul>\n";
 while($stmt->fetch()){
 //	printf("\t<li>%s</li>\n",
 //		htmlspecialchars()
 //  );
-  
- echo "<form action = 'view_story.php' method = POST>";
- echo '<a href= "view_story.php"> '.$title.' </a>';
- echo "</form>";
+ //echo $story_id;
+ echo '<form name = "input" action = "view_story.php" method = "POST">';
+ echo '<input type = "submit" name = "submit" value="View Story">';
+ echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
+ echo '</form>';
 }
 echo "</ul>\n";
 

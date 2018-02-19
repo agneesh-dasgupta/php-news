@@ -28,7 +28,7 @@
         echo '<input type = "submit" name = "submit" value="Edit">';
         echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
         echo '</form>';
-        echo '<form name = "input" action = "news_delete" method = "POST">';
+        echo '<form name = "input" action = "news_delete.php" method = "POST">';
         echo '<input type = "submit" name = "submit" value="delete">';
         echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
         echo '</form>';
