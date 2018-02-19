@@ -20,9 +20,9 @@
     //will pring out the textboxes that allow user to change the story_text 
     while($stmt->fetch()){
         echo "<form action = 'edit.php' method = POST>";
-        echo '<textarea name = "newtitle">'  htmlspecialchars($title)  '</textarea>';
-		echo '<textarea name = "newstorytext">' htmlspecialchars($story_text) '</textarea>';
-        echo '<textarea name = "newlink">'  htmlspecialchars($link) '</textarea>';
+        echo '<textarea name = "newtitle">'  htmlentities($title)  '</textarea>';
+		echo '<textarea name = "newstorytext">' htmlentities($story_text) '</textarea>';
+        echo '<textarea name = "newlink">'  htmlentities($link) '</textarea>';
         echo "<label for='viewbutton'></label>";
         echo "<input type='submit' id ='viewbutton' value='Edit Story'/>";
         echo "</form>";
