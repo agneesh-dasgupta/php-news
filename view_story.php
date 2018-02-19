@@ -26,6 +26,7 @@
         echo '<p> Enter comment: </p>'; 
 		    echo '<textarea name = "commentText"> </textarea>';
         echo "<label for='viewbutton'></label>";
+        echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
         echo "<input type='submit' id ='viewbutton' value='submit' name='commentSubmit' />";
         echo "</form>";
 }
