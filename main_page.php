@@ -30,8 +30,8 @@
       //query that will select the title and the storyid
       $stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
       if(!$stmt){
-      	printf("Query Prep Failed: %s\n", $mysqli->error);
-      	exit;
+      printf("Query Prep Failed: %s\n", $mysqli->error);
+      exit;
       }
        
 
@@ -39,8 +39,8 @@
       
 $stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
 if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+printf("Query Prep Failed: %s\n", $mysqli->error);
+exit;
 }
 
 
