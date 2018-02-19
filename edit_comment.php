@@ -5,7 +5,7 @@
     $newstorytext = $_POST['newstorytext'];
     $newlink = $_POST['newlink'];
     
-     $stmt = $mysqli->prepare("update comments set comment_text=? where comment_id=?");
+     $stmt = $mysqli->prepare("update comments comment_text=? where comment_id=?");
     if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
