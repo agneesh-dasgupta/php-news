@@ -20,7 +20,14 @@
         echo "<br>";
         echo "<p>  $storytext  </p>";
         echo "<br>";
-        echo "<a href = '$link'> Link </a>";        
+        echo "<a href = '$link'> Link </a>";
+        echo "<br>";
+        echo "<form action = 'comment_submit.php' method = POST>";
+        echo '<p> Enter comment: </p>'; 
+		echo '<textarea name = "commentText"> </textarea>';
+        echo "<label for='viewbutton'></label>";
+        echo "<input type='submit' id ='viewbutton' value='submit' name='commentSubmit' />";
+        echo "</form>";
 }
     
     $stmt->close();
@@ -40,9 +47,10 @@
     $stmt2->bind_result($username, $comment_text);
     
     while($stmt2->fetch()){
-        echo "<p> .$username. </p>";
+        echo "<p> Comment Author: $username </p>";
+        //echo "<br>";
+        echo "<p> $comment_text </p>";
         echo "<br>";
-        echo "<p> .$comment_text. </p>";        
 }
     
     $stmt2->close();

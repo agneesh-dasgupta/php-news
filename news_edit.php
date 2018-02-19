@@ -16,8 +16,8 @@
 
     while($stmt->fetch()){
         echo "<form action = 'edit.php' method = POST>";
-		echo '<textarea name = "newstorytext">' . $story_text . '</textarea>';
-        echo '<textarea name = "newlink">' . $link . '</textarea>';
+		echo '<textarea name = "newstorytext">' $story_text '</textarea>';
+        echo '<textarea name = "newlink">'  $link  '</textarea>';
         echo "<label for='viewbutton'></label>";
         echo "<input type='submit' id ='viewbutton' value='Edit Story'/>";
         echo "</form>";
