@@ -17,6 +17,8 @@
     echo '<input type = "submit" name = "addstory" value = "Add Story">';
     echo '</form>';
     $tempUsername = $_SESSION['user_id'];
+    //echo $tempUsername;
+    //exit;
     //selects the info for the stories by the logged in user
     $stmt = $mysqli->prepare("select story_id, storytext, title from stories where username=?");
     if(!$stmt){
