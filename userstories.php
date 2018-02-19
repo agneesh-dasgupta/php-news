@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+           <meta charset="utf-8">
+           <title> User Page </title>
+           <link href="styles.css" rel="stylesheet">
+        </head>
+        <body>
+<h1>User's news hub</h1>
 <?php
     //page for user that shows only their stories
     require 'database.php';
@@ -47,3 +56,5 @@
     $stmt->close();
     
 ?>
+    </body>
+</html>

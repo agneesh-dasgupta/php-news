@@ -1,11 +1,12 @@
 <!DOCTYPE html>
     <html>
         <head>
-           <title>
-            Main page
-           </title> 
+           <meta charset="utf-8">
+           <title> Main page </title>
+           <link href="styles.css" rel="stylesheet">
         </head>
         <body>
+         <h1>Main Stories Page</h1>
      <?php
 
       require 'database.php';

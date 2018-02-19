@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="utf-8">
+        <title> Login page</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+</html>
+<body>
+    <h1>Story View</h1>
+
+
 <?php
   require 'database.php';
   session_start();
@@ -20,10 +32,10 @@
     $stmt->bind_result($title, $storytext, $link);
     //prints of the information for the story based on the story_id
     while($stmt->fetch()){
-      echo $isGuest;
-        echo "<h2>"  htmlentities($title) "</h2>";
+
+        echo "<h2>"  .$title. "</h2>";
         echo "<br>";
-        echo "<p>"  htmlentities($storytext) "</p>";
+        echo "<p>"  .$storytext."</p>";
         echo "<br>";
         echo "<a href = '$link'> Link </a>";
         echo "<br>";
@@ -58,9 +70,9 @@
     
     //printing off the comments along with buttons in order to delete or edit a comment
     while($stmt2->fetch()){
-        echo "<p> Comment Author:" htmlentities($username) "</p>";
+        echo "<p> Comment Author:" .$username. "</p>";
         //echo "<br>";
-        echo "<p>" htmlentities($comment_text) "</p>";
+        echo "<p>" .$comment_text. "</p>";
         echo "<br>";
         if(strcmp($currentuser,$username)==0){
           echo "<form action = 'news_edit_comment.php' method = POST>";
@@ -79,3 +91,6 @@
     $stmt2->close();
     
 ?>
+
+</body>
+</html>
