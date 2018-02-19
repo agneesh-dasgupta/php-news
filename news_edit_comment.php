@@ -7,8 +7,8 @@
             <?php
                 require 'database.php';
                 //selects the comment_text based on the comment_id given
-                $comment_text= $_POST['comment_text'];
-                $comment_id= $_POST['comment_id'];
+                $comment_text= (string) $_POST['comment_text'];
+                $comment_id= (int) $_POST['comment_id'];
                 $stmt = $mysqli->prepare("select comment_text from comments where comment_id=?");
                 if(!$stmt){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -23,7 +23,7 @@
                  //Will print off a textbox with the comment text to be edited 
                 while($stmt->fetch()){
                     echo "<form action = 'edit_comment.php' method = POST>";
-                    echo '<textarea name = "comment_text">' htmlentities($comment_text) '</textarea>';
+                    echo '<textarea name = "comment_text">' . $comment_text . '</textarea>';
                     echo "<label for='viewbutton'></label>";
                     echo "<input type='submit' id ='viewbutton' value='Edit Comment'/>";
                     echo '<input type = "hidden" name = "comment_id" value ="'.$comment_id.'" >';

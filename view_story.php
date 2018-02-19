@@ -13,7 +13,7 @@
 <?php
   require 'database.php';
   session_start();
-  $story_id = $_POST['storyid'];
+  $story_id = (int) $_POST['storyid'];
   $currentuser = $_SESSION['user_id'];
   //query that will get the important aspects of the story to be displayed
 
@@ -41,6 +41,7 @@
         echo "<br>";
         if(strcmp($isGuest,'true')!=0){
            echo "<form action = 'comment_submit.php' method = POST>";
+        echo htmlentities("You will be redirected to the homepage once you enter or change a comment");
         echo '<p> Enter comment: </p>'; 
 		    echo '<textarea name = "commentText"> </textarea>';
         echo "<label for='viewbutton'></label>";
@@ -89,8 +90,9 @@
 }
     
     $stmt2->close();
-    
+    echo "<a href = 'main_page.php'> Back to main page </a>";
 ?>
+    
 
 </body>
 </html>

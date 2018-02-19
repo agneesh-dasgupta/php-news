@@ -14,11 +14,15 @@
       $isGuest = $_SESSION['isGuest'];
 
    
-      //guest options
+      //Only available if registered user
       if(strcmp($isGuest,'true')!=0){
+      echo '<a href = "deleteuser.php"> Delete user </a>';
+      echo '<br>';
+      echo '<a href = "changeusername.php"> Change password </a>';
+      echo '<br>';
       echo '<a href="news_logout.php"> Logout </a>';
       echo '<form action = "userstories.php">';
-      echo '<input type = "submit" value = "View user stories" />';
+      echo '<input type = "submit" value = "Add/View User stories" />';
       echo '</form>';
        $currentUser = $_SESSION['user_id'];
        

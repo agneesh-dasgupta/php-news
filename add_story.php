@@ -5,10 +5,10 @@
     require 'database.php';
     session_start();
     //takes in all the things needed to add a story to the stories table
-    $storyText = $_POST['storytext'];
-    $tempUsername = $_SESSION['user_id'];
-    $link = $_POST['link'];
-    $title = $_POST['title'];
+    $storyText = (string) $_POST['storytext'];
+    $tempUsername = (string) $_SESSION['user_id'];
+    $link = (string) $_POST['link'];
+    $title = (string) $_POST['title'];
     $stmt = $mysqli->prepare("insert into stories (storytext, username, link, title) values (?,?,?, ?)");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);

@@ -17,6 +17,6 @@
     
     $stmt->close();
     
-    header("Location: main_page.php");
+    header("Location: userstories.php");
 
 ?>

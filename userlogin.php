@@ -4,11 +4,16 @@
 	session_start();
 	//hashing the password from post
 	$username = $_POST['username'];
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$password = $_POST['password'];
 	if( !preg_match('/^[\w_\-]+$/', $username) ){
         echo htmlentities("Invalid new username");
         exit;
 	}
+	if( !preg_match('/^[\w_\-]+$/', $password) ){
+        echo htmlentities("Invalid new password");
+        exit;
+	}
+	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	//gets username to match against
 	$stmt = $mysqli->prepare("select username from users");
     if(!$stmt){

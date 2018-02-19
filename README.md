@@ -3,14 +3,14 @@
     -Agneesh Dasgupta (450680)
 
 ### Link to site main page:
-http://ec2-18-216-245-17.us-east-2.compute.amazonaws.com/~dannyAguirre/loginnews.html
+http://ec2-18-217-84-19.us-east-2.compute.amazonaws.com/~agneeshdasgupta/loginnews.html
 
 ## Login details:
-    -danny password: 12345
-    -agneesh password: 12345
+    -username: danny password: 12
+    -username: agneesh password: adg123
     -can also create additional users
 
 
 ### Creative Portion:
-We decided to have the option to delete a user, and change the username and password for an already existing user.
+We decided to have the option to delete a user, and change the password for an already existing user.
 

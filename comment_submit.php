@@ -3,7 +3,7 @@
     session_start();
     //takes in variables needed to submit a new comment
     $username = $_SESSION['user_id'];
-    $commentText= $_POST['commentText'];
+    $commentText= (string) $_POST['commentText'];
     $story_id = $_POST['storyid'];
    
     //query that inserts new comment into comments table
