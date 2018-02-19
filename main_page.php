@@ -12,38 +12,35 @@
       require 'database.php';
       session_start();
       $isGuest = $_SESSION['isGuest'];
-      $currentUser = $_SESSION['user_id'];
-      echo '<a href="news_logout.php"> Logout </a>';
+
+   
       //guest options
       if(strcmp($isGuest,'true')!=0){
-       echo '<form action = "userstories.php">';
+      echo '<a href="news_logout.php"> Logout </a>';
+      echo '<form action = "userstories.php">';
       echo '<input type = "submit" value = "View user stories" />';
       echo '</form>';
+       $currentUser = $_SESSION['user_id'];
        
+      }
+      if(strcmp($isGuest,'true')==0){
+       $currentUser = "";
+       echo '<a href = "loginnews.html"> Log In/Sign Up </a>';
       }
       //query that will select the title and the storyid
       $stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
       if(!$stmt){
-      	printf("Query Prep Failed: %s\n", $mysqli->error);
-      	exit;
+      printf("Query Prep Failed: %s\n", $mysqli->error);
+      exit;
       }
-require 'database.php';
-session_start();
-$isGuest = $_SESSION['isGuest'];
-if(strcmp($isGuest,'true')!=0){
- $currentUser = $_SESSION['user_id'];
- echo '<a href="news_logout.php"> Logout </a>';
- echo '<form action = "userstories.php">';
- echo '<input type = "submit" value = "View user stories" />';
-  echo '</form>';
        
-}
+
 
       
 $stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
 if(!$stmt){
-	printf("Query Prep Failed: %s\n", $mysqli->error);
-	exit;
+printf("Query Prep Failed: %s\n", $mysqli->error);
+exit;
 }
 
 
