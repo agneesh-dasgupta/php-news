@@ -3,7 +3,6 @@
     session_start();
   
   $story_id = $_POST['storyid'];
-  echo $story_id;
   $stmt = $mysqli->prepare("select title, storytext, link from stories where story_id=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -17,23 +16,18 @@
     $stmt->bind_result($title, $storytext, $link);
     
     while($stmt->fetch()){
-        echo "<h2> .$title. </h2>";
+        echo "<h2>  $title  </h2>";
         echo "<br>";
-        echo "<p> .$storytext. </p>";
+        echo "<p>  $storytext  </p>";
         echo "<br>";
-        echo "<p> .$link. </p>";        
+        echo "<a href = '$link'> Link </a>";        
 }
     
     $stmt->close();
     
-    $mysqli2 = new mysqli('localhost', 'newsadmin', 'fakenews', 'news');
-
-    if($mysqli2->connect_errno) {
-        printf("Connection Failed: %s\n", $mysqli2->connect_error);
-	exit;
-    }
+ 
     
-    $stmt2 = $mysqli2->prepare("select username, comment_text where story_id=?");
+    $stmt2 = $mysqli->prepare("select username, comment_text from comments where storyid=?");
     if(!$stmt2){
         printf("Query Prep Failed: %s\n", $mysqli2->error);
         exit;

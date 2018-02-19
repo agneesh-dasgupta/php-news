@@ -9,8 +9,7 @@
      <?php
 require 'database.php';
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
-$isGuest = $_POST['isGuest'];
+$isGuest = $_SESSION['isGuest'];
       if(strcmp($isGuest,'true')!=0){
        echo '<form action = "userstories.php">';
       echo '<input type = "submit" value = "View user stories" />';
@@ -32,8 +31,7 @@ echo "<ul>\n";
 while($stmt->fetch()){
 //	printf("\t<li>%s</li>\n",
 //		htmlspecialchars()
-//  );
- //echo $story_id;
+ echo $title;
  echo '<form name = "input" action = "view_story.php" method = "POST">';
  echo '<input type = "submit" name = "submit" value="View Story">';
  echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
