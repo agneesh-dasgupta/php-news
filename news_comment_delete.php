@@ -19,7 +19,7 @@
 
                 
                 $stmt->close();
-                
+                header("Location: main_page.php");
             ?>
         </body>
     </html>

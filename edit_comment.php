@@ -1,11 +1,11 @@
 <?php
     require 'database.php';
     session_start();
-    $story_id = $_SESSION['storyid'];
-    $newstorytext = $_POST['newstorytext'];
-    $newlink = $_POST['newlink'];
     
-     $stmt = $mysqli->prepare("update comments comment_text=? where comment_id=?");
+    $comment_text = $_POST['comment_text'];
+    $comment_id = $_POST['comment_id'];
+    
+     $stmt = $mysqli->prepare("update comments set comment_text=? where comment_id=?");
     if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
