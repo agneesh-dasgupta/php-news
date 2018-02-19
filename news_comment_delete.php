@@ -6,6 +6,8 @@
         <body>
             <?php
                 require 'database.php';
+                //query that will delete a comment based on the given id
+                //will be called when pushing delete comment in the view_story
                 $comment_id= $_POST['comment_id'];       
                 $stmt = $mysqli->prepare("delete from comments where comment_id=?");
                 if(!$stmt){
@@ -19,6 +21,7 @@
 
                 
                 $stmt->close();
+                //redirects to the main page
                 header("Location: main_page.php");
             ?>
         </body>

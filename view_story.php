@@ -3,6 +3,7 @@
   session_start();
   $story_id = $_POST['storyid'];
   $currentuser = $_SESSION['user_id'];
+  //query that will get the important aspects of the story to be displayed
   $stmt = $mysqli->prepare("select title, storytext, link from stories where story_id=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -14,7 +15,7 @@
     $stmt->execute();
     
     $stmt->bind_result($title, $storytext, $link);
-    
+    //prints of the information for the story based on the story_id
     while($stmt->fetch()){
         echo "<h2>  $title  </h2>";
         echo "<br>";
@@ -34,7 +35,7 @@
     $stmt->close();
     
  
-    
+    //second query that will display the comments
     $stmt2 = $mysqli->prepare("select username, comment_text, comment_id from comments where storyid=?");
     if(!$stmt2){
         printf("Query Prep Failed: %s\n", $mysqli2->error);
@@ -47,6 +48,8 @@
     
     $stmt2->bind_result($username, $comment_text, $comment_id);
     
+    
+    //printing off the comments along with buttons in order to delete or edit a comment
     while($stmt2->fetch()){
         echo "<p> Comment Author: $username </p>";
         //echo "<br>";

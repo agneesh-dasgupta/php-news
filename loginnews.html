@@ -5,22 +5,9 @@
     </head>
 </html>
 <body>
-    <form name = "input" action = "userlogin.php" method = "POST">
-        <p>
-            If you would like to create a new account, please enter a new username and password below. 
-        </p>
-        <p>
-            Username: <input type = "text" name = "username">
-        </p>
-        <p>
-            Password: <input type = "password" name = "password">
-        </p>
-        <p>
-            <label for="viewbutton"></label>
-            <input type="submit" id ="viewbutton" value="Create User"/>
-        </p>
-            <input type = "hidden" name = "isGuest" value = "false"/>
-    </form>
+    <!--Main login page
+    Has a place to type in user information, create a new user based on the information provided, or
+    can sign in as a guest-->
     <form name = "input" action = "uservalidation.php" method = "POST">
         <p>
             If you are a returning user, log in below. 
@@ -37,6 +24,24 @@
         </p>
         <input type = "hidden" name = "isGuest" value = "false"/>
     </form>
+    
+    <form name = "input" action = "userlogin.php" method = "POST">
+        <p>
+            If you would like to create a new account, please enter a new username and password below. 
+        </p>
+        <p>
+            Username: <input type = "text" name = "username">
+        </p>
+        <p>
+            Password: <input type = "password" name = "password">
+        </p>
+        <p>
+            <label for="viewbutton"></label>
+            <input type="submit" id ="viewbutton" value="Create User"/>
+        </p>
+            <input type = "hidden" name = "isGuest" value = "false"/>
+    </form>
+    
     <form name = "input" action = "main_page.php" method = "POST">
         <p>
             Click here to log in as a guest. 
