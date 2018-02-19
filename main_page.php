@@ -10,7 +10,8 @@
 require 'database.php';
 session_start();
 $isGuest = $_SESSION['isGuest'];
-echo '<a href="logout.php"> Logout </a>';
+$currentUser = $_SESSION['user_id'];
+echo '<a href="news_logout.php"> Logout </a>';
 
       if(strcmp($isGuest,'true')!=0){
        echo '<form action = "userstories.php">';

@@ -5,8 +5,9 @@
         </head>
         <body>
             <?php
+                require 'database.php';
                 $comment_id= $_POST['comment_id'];       
-                $stmt = $mysqli->prepare("delete from where comment_id=?");
+                $stmt = $mysqli->prepare("delete from comments where comment_id=?");
                 if(!$stmt){
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;

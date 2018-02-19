@@ -15,14 +15,13 @@
     	printf("Query Prep Failed: %s\n", $mysqli->error);
     	exit;
     }
- 
     $stmt->bind_param('ssi', $username, $commentText, $story_id);
  
     $stmt->execute();
  
     $stmt->close();
     header("Location: main_page.php");
-    exit;
+    //exit;
 
 
 ?>

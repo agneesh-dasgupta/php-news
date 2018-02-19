@@ -1,8 +1,8 @@
 <?php
-    require 'database.php';
-    session_start();
-  
+  require 'database.php';
+  session_start();
   $story_id = $_POST['storyid'];
+  $currentuser = $_SESSION['user_id'];
   $stmt = $mysqli->prepare("select title, storytext, link from stories where story_id=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -24,7 +24,7 @@
         echo "<br>";
         echo "<form action = 'comment_submit.php' method = POST>";
         echo '<p> Enter comment: </p>'; 
-		echo '<textarea name = "commentText"> </textarea>';
+		    echo '<textarea name = "commentText"> </textarea>';
         echo "<label for='viewbutton'></label>";
         echo "<input type='submit' id ='viewbutton' value='submit' name='commentSubmit' />";
         echo "</form>";
@@ -34,7 +34,7 @@
     
  
     
-    $stmt2 = $mysqli->prepare("select username, comment_text from comments where storyid=?");
+    $stmt2 = $mysqli->prepare("select username, comment_text, comment_id from comments where storyid=?");
     if(!$stmt2){
         printf("Query Prep Failed: %s\n", $mysqli2->error);
         exit;
@@ -44,13 +44,25 @@
     
     $stmt2->execute();
     
-    $stmt2->bind_result($username, $comment_text);
+    $stmt2->bind_result($username, $comment_text, $comment_id);
     
     while($stmt2->fetch()){
         echo "<p> Comment Author: $username </p>";
         //echo "<br>";
         echo "<p> $comment_text </p>";
         echo "<br>";
+        if(strcmp($currentuser,$username)==0){
+          echo "<form action = 'news_edit_comment.php' method = POST>";
+          echo '<input type = "hidden" name = "comment_text" value ="'.$comment_text.'" >';
+          echo "<input type='submit' id ='viewbutton' value='Edit Comment' name='commentSubmit' />";
+          echo '<input type = "hidden" name = "comment_id" value ="'.$comment_id.'" >';
+          echo "</form>";
+          
+          echo "<form action = 'news_comment_delete.php' method = POST>";
+          echo "<input type='submit' id ='viewbutton' value='Delete Comment' name='commentSubmit' />";
+          echo '<input type = "hidden" name = "comment_id" value ="'.$comment_id.'" >';
+          echo "</form>";
+        }
 }
     
     $stmt2->close();
