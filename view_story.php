@@ -14,10 +14,16 @@
   require 'database.php';
   session_start();
   $story_id = (int) $_POST['storyid'];
-  $currentuser = $_SESSION['user_id'];
+
   //query that will get the important aspects of the story to be displayed
 
   $isGuest = $_SESSION['isGuest'];
+  if(strcmp($isGuest,'true')!=0){
+      $currentuser = $_SESSION['user_id'];
+  }
+  else{
+    $currentuser = " ";
+  }
 
   $stmt = $mysqli->prepare("select title, storytext, link from stories where story_id=?");
     if(!$stmt){

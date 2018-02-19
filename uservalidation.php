@@ -8,8 +8,8 @@ $stmt = $mysqli->prepare("SELECT COUNT(*), username, password FROM users WHERE u
 // Bind the parameter
 $stmt->bind_param('s', $user);
 $user = $_POST['username'];
-$isGuest = $_POST['isGuest'];
-$_SESSION[isGuest] = $isGuest;
+$isGuest = (string) $_POST['isGuest'];
+$_SESSION['isGuest'] = $isGuest;
 $stmt->execute();
 
 // Bind the results

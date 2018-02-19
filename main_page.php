@@ -16,9 +16,10 @@
    
       //Only available if registered user
       if(strcmp($isGuest,'true')!=0){
-      echo '<a href = "deleteuser.php"> Delete user </a>';
-      echo '<br>';
       echo '<a href = "changeusername.php"> Change password </a>';
+      echo '<br>';
+      echo '<a href = "deleteuser.php"> Delete current user </a>';
+      echo htmlentities(' You will be logged out and your username will be deleted.');
       echo '<br>';
       echo '<a href="news_logout.php"> Logout </a>';
       echo '<form action = "userstories.php">';
