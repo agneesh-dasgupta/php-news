@@ -7,6 +7,7 @@
         </head>
         <body>
      <?php
+<<<<<<< HEAD
       require 'database.php';
       session_start();
       $isGuest = $_SESSION['isGuest'];
@@ -25,6 +26,26 @@
       	printf("Query Prep Failed: %s\n", $mysqli->error);
       	exit;
       }
+=======
+require 'database.php';
+session_start();
+$isGuest = $_SESSION['isGuest'];
+if(strcmp($isGuest,'true')!=0){
+ $currentUser = $_SESSION['user_id'];
+ echo '<a href="news_logout.php"> Logout </a>';
+ echo '<form action = "userstories.php">';
+ echo '<input type = "submit" value = "View user stories" />';
+  echo '</form>';
+       
+}
+
+      
+$stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
+if(!$stmt){
+	printf("Query Prep Failed: %s\n", $mysqli->error);
+	exit;
+}
+>>>>>>> 275259ccc4adebee1405882489277706673fa17c
 
        $stmt->execute();
 

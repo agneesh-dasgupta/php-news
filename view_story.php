@@ -4,6 +4,9 @@
   $story_id = $_POST['storyid'];
   $currentuser = $_SESSION['user_id'];
   //query that will get the important aspects of the story to be displayed
+
+  $isGuest = $_SESSION['isGuest'];
+
   $stmt = $mysqli->prepare("select title, storytext, link from stories where story_id=?");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -17,19 +20,23 @@
     $stmt->bind_result($title, $storytext, $link);
     //prints of the information for the story based on the story_id
     while($stmt->fetch()){
+      echo $isGuest;
         echo "<h2>  $title  </h2>";
         echo "<br>";
         echo "<p>  $storytext  </p>";
         echo "<br>";
         echo "<a href = '$link'> Link </a>";
         echo "<br>";
-        echo "<form action = 'comment_submit.php' method = POST>";
+        if(strcmp($isGuest,'true')!=0){
+           echo "<form action = 'comment_submit.php' method = POST>";
         echo '<p> Enter comment: </p>'; 
 		    echo '<textarea name = "commentText"> </textarea>';
         echo "<label for='viewbutton'></label>";
         echo '<input type = "hidden" name = "storyid" value ="'.$story_id.'" >';
         echo "<input type='submit' id ='viewbutton' value='submit' name='commentSubmit' />";
         echo "</form>";
+        }
+       
 }
     
     $stmt->close();
