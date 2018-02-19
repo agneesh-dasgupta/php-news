@@ -21,9 +21,9 @@
     //prints of the information for the story based on the story_id
     while($stmt->fetch()){
       echo $isGuest;
-        echo "<h2>  $title  </h2>";
+        echo "<h2>"  htmlspecialchars($title) "</h2>";
         echo "<br>";
-        echo "<p>  $storytext  </p>";
+        echo "<p>"  htmlspecialchars($storytext) "</p>";
         echo "<br>";
         echo "<a href = '$link'> Link </a>";
         echo "<br>";
@@ -58,9 +58,9 @@
     
     //printing off the comments along with buttons in order to delete or edit a comment
     while($stmt2->fetch()){
-        echo "<p> Comment Author: $username </p>";
+        echo "<p> Comment Author:" htmlspecialchars($username) "</p>";
         //echo "<br>";
-        echo "<p> $comment_text </p>";
+        echo "<p>" htmlspecialchars($comment_text) "</p>";
         echo "<br>";
         if(strcmp($currentuser,$username)==0){
           echo "<form action = 'news_edit_comment.php' method = POST>";

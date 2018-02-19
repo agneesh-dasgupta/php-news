@@ -23,7 +23,7 @@
                  //Will print off a textbox with the comment text to be edited 
                 while($stmt->fetch()){
                     echo "<form action = 'edit_comment.php' method = POST>";
-                    echo '<textarea name = "comment_text">' .$comment_text. '</textarea>';
+                    echo '<textarea name = "comment_text">' htmlspecialchars($comment_text) '</textarea>';
                     echo "<label for='viewbutton'></label>";
                     echo "<input type='submit' id ='viewbutton' value='Edit Comment'/>";
                     echo '<input type = "hidden" name = "comment_id" value ="'.$comment_id.'" >';
