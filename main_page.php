@@ -10,15 +10,15 @@
 require 'database.php';
 session_start();
 $isGuest = $_SESSION['isGuest'];
-$currentUser = $_SESSION['user_id'];
-echo '<a href="news_logout.php"> Logout </a>';
-
-      if(strcmp($isGuest,'true')!=0){
-       echo '<form action = "userstories.php">';
-      echo '<input type = "submit" value = "View user stories" />';
-      echo '</form>';
+if(strcmp($isGuest,'true')!=0){
+ $currentUser = $_SESSION['user_id'];
+ echo '<a href="news_logout.php"> Logout </a>';
+ echo '<form action = "userstories.php">';
+ echo '<input type = "submit" value = "View user stories" />';
+  echo '</form>';
        
-      }
+}
+
       
 $stmt = $mysqli->prepare("select title, story_id from stories order by story_id");
 if(!$stmt){
