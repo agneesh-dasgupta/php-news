@@ -7,7 +7,7 @@
         </head>
         <body>
      <?php
-<<<<<<< HEAD
+
       require 'database.php';
       session_start();
       $isGuest = $_SESSION['isGuest'];
@@ -26,7 +26,6 @@
       	printf("Query Prep Failed: %s\n", $mysqli->error);
       	exit;
       }
-=======
 require 'database.php';
 session_start();
 $isGuest = $_SESSION['isGuest'];
@@ -45,7 +44,7 @@ if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
 }
->>>>>>> 275259ccc4adebee1405882489277706673fa17c
+
 
        $stmt->execute();
 
